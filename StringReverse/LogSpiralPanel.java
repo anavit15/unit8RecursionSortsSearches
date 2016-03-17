@@ -12,19 +12,30 @@ public class LogSpiralPanel extends JPanel
    private final int HEIGHT=800;
    double a;
    double aphi;
+   int angle=0;
+   
 
    public void paintComponent(Graphics g)
    {
       Graphics2D g2= (Graphics2D) g;
       setSize(WIDTH,HEIGHT);
-      a=WIDTH/GOLDEN_MEAN;
+      a=getHeight()/GOLDEN_MEAN;
       aphi=a*GOLDEN_MEAN;
       double x=0;
       double y=0;
       Rectangle2D.Double rectangle=new Rectangle2D.Double(x,y,a,aphi);
-      
-      
       g2.draw(rectangle);
+      
+      
+      if (angle<=270)
+      {
+          angle+=90;
+      }
+      else
+      {
+          angle=0;
+      }
+      recursiveDraw(g2,x,y,a,angle);
        
        /* Your code goes here.
          1. Compute the dimensions of the goldenRectangle (you can use getHeight() 
@@ -48,8 +59,15 @@ public class LogSpiralPanel extends JPanel
    private void recursiveDraw(Graphics2D g2, double x, double y, double side, int angle)
    {
       // Recursion ending condition: when the side is very small
-     
-
+       if (side<=10)
+       {
+           
+       }
+       else
+       {
+           drawArc(g2,x,y,side,angle);
+           repaint();
+       }
       // Draw the current square and arc
      
 
