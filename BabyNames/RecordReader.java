@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class RecordReader
 {
    private double total;
+   
    private double limit;
 
    /**
@@ -14,7 +15,7 @@ public class RecordReader
    public RecordReader(double aLimit)
    {
       total = 0;
-      limit = aLimit;
+      limit = aLimit/2;
    }
 
    /**
@@ -25,11 +26,13 @@ public class RecordReader
    public void process(Scanner in)
    {
       String name = in.next();
-      int count = in.nextInt();
-      double percent = in.nextDouble();
+      String sCount=in.next();
+      String nCount=sCount.replaceAll(",","");
+      int count=Integer.parseInt(nCount);
+      total+=count;
       
       if (total < limit) { System.out.print(name + " "); }
-      total = total + percent;
+      //total = total + percent;
    }
 
    /**

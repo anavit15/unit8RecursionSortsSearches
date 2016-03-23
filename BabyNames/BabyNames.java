@@ -4,15 +4,14 @@ import java.util.Scanner;
 
 public class BabyNames
 {
-   public static final double LIMIT = 50;
-
+   private static int bTotal=19229058;
+   private static int gTotal=18450257;
+   
    public static void main(String[] args) throws FileNotFoundException
    {  
-      Scanner in = new Scanner(new File("babynames.txt"));
-         
-      RecordReader boys = new RecordReader(LIMIT);
-      RecordReader girls = new RecordReader(LIMIT);
-      
+      Scanner in = new Scanner(new File("babynames80.txt"));
+      RecordReader boys = new RecordReader(bTotal);
+      RecordReader girls = new RecordReader(gTotal);
       while (boys.hasMore() || girls.hasMore())
       {
          int rank = in.nextInt();
@@ -24,4 +23,4 @@ public class BabyNames
 
       in.close();
    }
-}	
+}   
